@@ -21,7 +21,7 @@ public class heThongQuanLi {
 	public List getDonHang() {
 		return donHang;
 	}
-	public void setDonHang(List donHang) {
+	public void setDonHang(List<String> donHang) {
 		this.donHang = donHang;
 	}
 	public List getTaiKhoanKhachHang() {
@@ -30,5 +30,45 @@ public class heThongQuanLi {
 	public void setTaiKhoanKhachHang(List taiKhoanKhachHang) {
 		this.taiKhoanKhachHang = taiKhoanKhachHang;
 	}
-
+	
+	void dangNhap(String taiKhoan, String matKhau) {
+		System.out.println("ten tai khoan"+"mat khau");
+	}
+	// tiem kiem san pham
+	public void timKiemSanPham(String tenSanPham) {
+		System.out.println("tiem kiem san pham" + tenSanPham);
+	}
+	
+	String quanLyDonHang(String donHangID) {
+		return donHangID;
+	}
+	String theoDoiKhoHang(String maSanPham) {
+		return maSanPham;		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

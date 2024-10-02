@@ -17,7 +17,7 @@ public class tiemKiemSanPham {
 	public void setKetQuaTimKiem(List<String> ketQuaTimKiem) {
 		this.ketQuaTimKiem = ketQuaTimKiem;
 	}
-
+	
 	// tiem kiem san pham
 		public void timKiemSanPham(String tenSanPham) {
 			System.out.println("tiem kiem san pham" + tenSanPham);
@@ -31,6 +31,5 @@ public class tiemKiemSanPham {
 	                ketQuaTimKiem.add(sp);
 	            }
 	        }
-		}
-	    		
+		}    		
 }
