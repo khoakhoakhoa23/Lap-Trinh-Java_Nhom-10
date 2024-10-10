@@ -14,7 +14,10 @@ import java.util.ResourceBundle;
 import java.util.Date;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;		
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -23,9 +26,32 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class fxmlDocumentControl implements Initializable {
+	@FXML
+	private TextField cb_answerForm;
+
+	@FXML
+	private Button cb_backBt;
+
+	@FXML
+	private Button cb_doneBt;
+
+	@FXML
+	private ComboBox<?> cb_questionForm;
+
+	@FXML
+    private TextField cb_username;
+
+	
+	@FXML
+	private AnchorPane password_form;
+
+	@FXML
+	private AnchorPane question_form;
+
 	@FXML
 	private Hyperlink si_forgotPass;
 
@@ -43,6 +69,9 @@ public class fxmlDocumentControl implements Initializable {
 
 	@FXML
 	private AnchorPane side_form;
+
+	@FXML
+	private Button side_havebt1;
 
 	@FXML
 	private Button side_signUpbt;
@@ -66,7 +95,17 @@ public class fxmlDocumentControl implements Initializable {
 	private TextField su_username;
 
 	@FXML
-	private Button side_havebt1;
+	private Button tx_backBt;
+
+	@FXML
+	private PasswordField tx_confirmpass;
+
+	@FXML
+	private Button tx_doneBt;
+
+	@FXML
+	private PasswordField tx_newpassword;
+
 
 	private Connection connect;
 	private PreparedStatement prepare;
@@ -105,12 +144,25 @@ public class fxmlDocumentControl implements Initializable {
 				prepare.setString(2, si_password.getText());
 
 				result = prepare.executeQuery();
+				//success => another form: main forms
 				if (result.next()) {
 					alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Information Messaage!");
 					alert.setHeaderText(null);
 					alert.setContentText("Login Successfull!");
 					alert.showAndWait();
+					//main form
+					Parent root = FXMLLoader.load(getClass().getResource("mainForm.fxml"));
+					Stage stage = new Stage();
+					Scene scene = new Scene(root);
+					stage.setTitle("Koi's Fish Shop");
+					stage.setMinWidth(1100);
+					stage.setMinHeight(600);
+					
+					stage.setScene(scene);
+					stage.show();
+					si_signInbt.getScene().getWindow().hide()
+;					
 				} else {
 					alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Error Messaage!");
@@ -194,6 +246,126 @@ public class fxmlDocumentControl implements Initializable {
 		}
 	}
 
+	public void switchforgotAcc() {
+		question_form.setVisible(true);
+		si_loginForm.setVisible(false);
+
+		forgotpassQuestion();
+	}
+
+	public void doneBt() {
+		if (cb_username.getText().isEmpty() || cb_questionForm.getSelectionModel().getSelectedItem() == null
+				|| cb_answerForm.getText().isEmpty()) {
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Messaage!");
+			alert.setHeaderText(null);
+			alert.setContentText("Please insert your infomation!");
+			alert.showAndWait();
+		} else {
+			String selectData = "SELECT username ,question, answer FROM employee WHERE username = ? AND question = ? AND answer = ?";
+			connect = Database.connectDB();
+			try {
+				prepare = connect.prepareStatement(selectData);
+				prepare.setString(1, cb_username.getText());
+				prepare.setString(2, (String) cb_questionForm.getSelectionModel().getSelectedItem());
+				prepare.setString(3, cb_answerForm.getText());
+
+				result = prepare.executeQuery();
+
+				if (result.next()) {
+					password_form.setVisible(true);
+					question_form.setVisible(false);
+				} else {
+					alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Error Messaage!");
+					alert.setHeaderText(null);
+					alert.setContentText("Wrong!");
+					alert.showAndWait();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void changePassBt() {
+		if (tx_newpassword.getText().isEmpty() || tx_confirmpass.getText().isEmpty()) {
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Messaage!");
+			alert.setHeaderText(null);
+			alert.setContentText("Please insert your new password/confirm password!");
+			alert.showAndWait();
+		} else {
+			if (tx_newpassword.getText().equals(tx_confirmpass.getText())) {
+				String getDate = "SELECT date FROM employee WHERE username = '" + cb_username.getText() + "'";
+				connect = Database.connectDB();
+				try {
+
+					prepare = connect.prepareStatement(getDate);
+					result = prepare.executeQuery();
+
+					String date = "";
+					if (result.next()) {
+						date = result.getString("date");
+					}
+
+					String updatePass = "UPDATE employee set password = '" + tx_newpassword.getText() + "', question ='"
+							+ cb_questionForm.getSelectionModel().getSelectedItem() + "', answer = '"
+							+ cb_answerForm.getText() + "', date = '" + date + "'WHERE username = '"
+							+ cb_username.getText() + "'";
+					
+					prepare = connect.prepareStatement(updatePass);
+					prepare.executeUpdate();
+					alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Information Messaage!");
+					alert.setHeaderText(null);
+					alert.setContentText("Done!");
+					alert.showAndWait();
+					
+					si_loginForm.setVisible(true);
+					password_form.setVisible(false);
+					
+					
+					tx_confirmpass.setText("");
+					tx_newpassword.setText("");
+					cb_questionForm.getSelectionModel().clearSelection();
+					cb_answerForm.setText("");
+					cb_username.setText("");
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
+				alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Messaage!");
+				alert.setHeaderText(null);
+				alert.setContentText("Not match!");
+				alert.showAndWait();
+			}
+
+		}
+
+	}
+	
+	public void backtoLogin() {
+		si_loginForm.setVisible(true);
+		question_form.setVisible(false);
+	}
+	public void backtoQuestion() {
+		question_form.setVisible(true);
+		password_form.setVisible(false);
+	}
+
+	public void forgotpassQuestion() {
+		List<String> listQ = new ArrayList<>();
+
+		for (String data : questionList) {
+			listQ.add(data);
+		}
+		ObservableList listData = FXCollections.observableArrayList(listQ);
+		cb_questionForm.setItems(listData);
+	}
+
 	public void switchForm(ActionEvent event) {
 		TranslateTransition slider = new TranslateTransition();
 
@@ -204,6 +376,9 @@ public class fxmlDocumentControl implements Initializable {
 			slider.setOnFinished((ActionEvent e) -> {
 				side_havebt1.setVisible(true);
 				side_signUpbt.setVisible(false);
+				question_form.setVisible(false);
+				si_loginForm.setVisible(true);
+				password_form.setVisible(false);
 				regLquestionList();
 			});
 			slider.play();
@@ -214,6 +389,10 @@ public class fxmlDocumentControl implements Initializable {
 			slider.setOnFinished((ActionEvent e) -> {
 				side_havebt1.setVisible(false);
 				side_signUpbt.setVisible(true);
+
+				question_form.setVisible(false);
+				si_loginForm.setVisible(true);
+				password_form.setVisible(false);
 
 			});
 			slider.play();

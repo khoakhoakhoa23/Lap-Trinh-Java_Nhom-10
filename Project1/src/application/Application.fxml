@@ -24,8 +24,35 @@
                   </Label>
                   <TextField fx:id="si_username" layoutX="21.0" layoutY="140.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="text-field" stylesheets="@application.css" />
                   <PasswordField fx:id="si_password" layoutX="21.0" layoutY="185.0" prefHeight="30.0" prefWidth="220.0" promptText="Password" styleClass="text-field" stylesheets="@application.css" />
+                  <Hyperlink fx:id="si_forgotPass" layoutX="21.0" layoutY="232.0" onAction="#switchforgotAcc" text="Forgot password?" />
                   <Button fx:id="si_signInbt" layoutX="136.0" layoutY="273.0" mnemonicParsing="false" onAction="#loginBt" prefHeight="30.0" prefWidth="105.0" styleClass="login-bt" stylesheets="@application.css" text="Sign in" />
-                  <Hyperlink fx:id="si_forgotPass" layoutX="21.0" layoutY="232.0" text="Forgot password?" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="question_form" layoutX="300.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@application.css">
+               <children>
+                  <Label layoutX="44.0" layoutY="59.0" styleClass="head-label" stylesheets="@application.css" text="Forgot Account" textFill="#25a46d">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cb_questionForm" layoutX="40.0" layoutY="170.0" prefHeight="30.0" prefWidth="220.0" promptText="Question" styleClass="text-field" stylesheets="@application.css" />
+                  <TextField fx:id="cb_answerForm" layoutX="40.0" layoutY="209.0" prefHeight="27.0" prefWidth="220.0" promptText="Answer" styleClass="text-field" stylesheets="@application.css" />
+                  <Button fx:id="cb_doneBt" layoutX="155.0" layoutY="271.0" mnemonicParsing="false" onAction="#doneBt" prefHeight="30.0" prefWidth="105.0" styleClass="login-bt" stylesheets="@application.css" text="Done" />
+                  <Button fx:id="cb_backBt" layoutX="127.0" layoutY="356.0" mnemonicParsing="false" onAction="#backtoLogin" styleClass="login-bt" stylesheets="@application.css" text="Back" />
+                  <TextField fx:id="cb_username" layoutX="38.0" layoutY="120.0" prefHeight="27.0" prefWidth="220.0" promptText="Username" styleClass="white-form" stylesheets="@application.css" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="password_form" layoutX="300.0" layoutY="2.0" prefHeight="400.0" prefWidth="300.0" styleClass="white-form" stylesheets="@application.css" visible="false">
+               <children>
+                  <Label layoutX="44.0" layoutY="59.0" styleClass="head-label" stylesheets="@application.css" text="Change Password" textFill="#25a46d">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="tx_newpassword" layoutX="44.0" layoutY="116.0" prefHeight="27.0" prefWidth="209.0" promptText="new_password" styleClass="text-field" stylesheets="@application.css" />
+                  <PasswordField fx:id="tx_confirmpass" layoutX="44.0" layoutY="161.0" prefHeight="27.0" prefWidth="209.0" promptText="confirm password" styleClass="text-field" stylesheets="@application.css" />
+                  <Button fx:id="tx_doneBt" layoutX="149.0" layoutY="213.0" mnemonicParsing="false" onAction="#changePassBt" prefHeight="30.0" prefWidth="105.0" styleClass="login-bt" stylesheets="@application.css" text="Done" />
+                  <Button fx:id="tx_backBt" layoutX="127.0" layoutY="356.0" mnemonicParsing="false" onAction="#backtoQuestion" styleClass="login-bt" stylesheets="@application.css" text="Back" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="su_createForm" prefHeight="403.0" prefWidth="300.0" styleClass="white-form" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
