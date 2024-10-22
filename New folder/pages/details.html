@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../Css/product.css" />
+    <link rel="stylesheet" href="../Css/details.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -28,7 +28,7 @@
         </ul>
         <div class="icons">
           <a href="checkout.html"><i class="fa-solid fa-cart-shopping"></i></a>
-
+          
           <a href="../Login/login.html" class="header_account"
             ><i class="fa-regular fa-user"></i
           ></a>
@@ -67,42 +67,34 @@
       </div>
     </section>
     <!---Product---->
-    <section class="Products">
-      <div class="product">
-        <h1>Koi Kohaku</h1>
+    <section class="Details">
+    <div class="prodetails">
+    
+      <div class="s-p-image">
+        <img src="../img/koi1.jpg" width="100%" id="MainImg" alt="" />
+          
+      </div>
 
-        <div class="boxs">
-          <div class="card">
-            <div class="small-carts">
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-share"></i>
-            </div>
-            <div class="img">
-              <img src="../img/koi1.jpg" alt="" />
-            </div>
-            <div class="product-info">
-              <h2>Tancho Kohaku</h2>
-              <p>
-                Tancho kohaku 84 cm 4 tuổi có nguồn gốc từ Dainichi có hình thể
-                đẹp mắt, dù mới 4 tuổi nhưng kích thước đã lên đến 84cm. Hoa văn
-                đẹp, màu sắc rõ nét, hình thể đẹp, khỏe mạnh, vạm vỡ, body rắn
-                chắc.
-              </p>
-              <h3>300.000<sup>đ</sup></h3>
-              <div class="product-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </div>
-              <a href="details.html" class="btn">View</a>
-            </div>
-          </div>
-        </div>
+      <div class="single-pro-details">
+        <h6>Shop/Koi Kohaku/Tancho Kohaku</h6>
+        <h4>Tancho Kohaku</h4>
+        <h2>300.000</h2><sup>đ</sup></h2>
+        <select>
+          <option>Select color</option>
+          <option>White</option>
+          <option>Black</option>
+        </select>
+
+        <input type="number" value="1" />
+        <button id="btn-cart">Add to cart</button>
+            <h4>Product detail</h4>
+            <span>
+                Tancho kohaku 84 cm 4 tuổi có nguồn gốc từ Dainichi  có hình thể đẹp mắt, dù mới 4 tuổi nhưng kích thước đã lên đến 84cm. Hoa văn đẹp, màu sắc rõ nét, hình thể đẹp, khỏe mạnh, vạm vỡ, body rắn chắc.
+            </span>
+            /div>
+    
       </div>
     </section>
-
     <!--Footer-->
     <footer>
       <div class="footer_main">
@@ -155,6 +147,6 @@
         </div>
       </div>
     </footer>
-    <script src="details.js"></script>
+    <script src="prodetails.js"></script>
   </body>
 </html>

@@ -74,6 +74,7 @@ section nav .icons {
   position: relative;
   display: inline-block;
 }
+
 section nav .icons .cart {
   position: absolute;
   top: -10px;
@@ -156,63 +157,100 @@ section .main .button:hover i {
   transform: translateX(6px);
 }
 
-/*blog*/
-#blog {
-  padding: 150px 150px 0 150px;
+/*cart*/
+.cart table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  white-space: nowrap;
 }
-#blog .blog-box {
+.cart table img {
+  width: 70px;
+}
+.cart table td:nth-child(1) {
+  width: 100px;
+  text-align: center;
+}
+.cart table td:nth-child(2) {
+  width: 150px;
+  text-align: center;
+}
+.cart table td:nth-child(3) {
+  width: 350px;
+  text-align: center;
+}
+.cart table td:nth-child(4),
+.cart table td:nth-child(5),
+.cart table td:nth-child(6) {
+  width: 150px;
+  text-align: center;
+}
+
+.cart table td:nth-child(5) input {
+  width: 70px;
+  padding: 10px 5px 10px 15px;
+}
+
+.cart table thead {
+  border: 1px solid #e2e9e1;
+  border-left: none;
+  border-right: none;
+}
+.cart table thead td {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 18px 0;
+}
+.cart table tbody tr td {
+  padding-top: 15px;
+}
+.cart table tbody td {
+  font-size: 13px;
+}
+
+.cart-add {
   display: flex;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  padding-bottom: 90px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-#blog .blog-img {
+.coupon {
   width: 50%;
-  margin-right: 40px;
+  margin-bottom: 30px;
 }
-#blog img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+.coupon h3,
+.total h3 {
+  padding-bottom: 15px;
 }
-#blog .blog-details {
-  width: 50%;
+.coupon input {
+  padding: 10px 20px;
+  outline: none;
+  width: 60%;
+  margin-right: 10px;
+  border: 1px solid #e2e9e1;
 }
-#blog .blog-details a {
-  text-decoration: none;
-  font-size: 15px;
-  color: #000;
-  font-weight: 700;
-  position: relative;
-  transition: 0.2s;
-}
-
-#blog .blog-details a::after {
-  content: "";
-  width: 50px;
-  height: 1px;
-  background-color: #000;
-  position: absolute;
-  top: 4px;
-  right: -60px;
-}
-
-#blog .blog-details a:hover {
-  color: #088178;
-}
-#blog .blog-details a:hover:after {
+.coupon button,
+.total button {
   background-color: #088178;
+  color: #fff;
+  padding: 12px 20px;
 }
-
-#blog .blog-box h1 {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  font-size: 70px;
-  font-weight: 700;
-  color: #c9cbce;
-  z-index: -9;
+.total {
+  width: 50%;
+  margin-bottom: 30px;
+  border: 1px solid #e2e9e1;
+  padding: 30px;
+}
+.total table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.total table td {
+  width: 50%;
+  border: 1px solid #e2e9e1;
+  padding: 10px;
+  font-size: 13px;
 }
 
 /*footer*/

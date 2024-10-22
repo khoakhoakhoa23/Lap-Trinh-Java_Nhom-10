@@ -71,6 +71,22 @@ section nav .icons {
   cursor: pointer;
   font-size: 18px;
   transition: 0.3ms;
+  position: relative;
+  display: inline-block;
+}
+
+section nav .icons .cart {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 14px;
 }
 section nav .icons i:hover {
   color: #604141;

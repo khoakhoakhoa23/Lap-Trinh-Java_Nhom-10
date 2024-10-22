@@ -74,6 +74,9 @@ section nav .icons {
   position: relative;
   display: inline-block;
 }
+section nav .icons i:hover {
+  color: #604141;
+}
 section nav .icons .cart {
   position: absolute;
   top: -10px;
@@ -86,9 +89,6 @@ section nav .icons .cart {
   height: 20px;
   text-align: center;
   font-size: 14px;
-}
-section nav .icons i:hover {
-  color: #604141;
 }
 section .main .main-container {
   display: flex;
@@ -156,63 +156,56 @@ section .main .button:hover i {
   transform: translateX(6px);
 }
 
-/*blog*/
-#blog {
-  padding: 150px 150px 0 150px;
-}
-#blog .blog-box {
+/*Product*/
+.prodetails {
   display: flex;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  padding-bottom: 90px;
-}
-#blog .blog-img {
-  width: 50%;
-  margin-right: 40px;
-}
-#blog img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-#blog .blog-details {
-  width: 50%;
-}
-#blog .blog-details a {
-  text-decoration: none;
-  font-size: 15px;
-  color: #000;
-  font-weight: 700;
-  position: relative;
-  transition: 0.2s;
+  margin-top: 20px;
 }
 
-#blog .blog-details a::after {
-  content: "";
+.prodetails .s-p-image {
+  width: 40%;
+  margin: 50px;
+}
+.small-img-gr {
+  display: flex;
+  justify-content: space-between;
+}
+.small-img-col {
+  flex-basis: 24%;
+  cursor: pointer;
+}
+.prodetails .single-pro-details {
+  width: 50%;
+  padding-top: 30px;
+}
+.prodetails .single-pro-details h4 {
+  padding: 40px 0 20px 0;
+}
+#prodetails .single-pro-details h2 {
+  font-size: 26px;
+}
+.prodetails .single-pro-details select {
+  display: block;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.prodetails .single-pro-details input {
   width: 50px;
-  height: 1px;
-  background-color: #000;
-  position: absolute;
-  top: 4px;
-  right: -60px;
+  height: 47px;
+  padding-left: 10px;
+  font-size: 16px;
+  margin-right: 10px;
 }
-
-#blog .blog-details a:hover {
-  color: #088178;
-}
-#blog .blog-details a:hover:after {
+.prodetails .single-pro-details button {
   background-color: #088178;
+  color: #fff;
+  cursor: pointer;
 }
-
-#blog .blog-box h1 {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  font-size: 70px;
-  font-weight: 700;
-  color: #c9cbce;
-  z-index: -9;
+.prodetails .single-pro-details input:focus {
+  outline: none;
+}
+.prodetails .single-pro-details span {
+  line-height: 25px;
 }
 
 /*footer*/

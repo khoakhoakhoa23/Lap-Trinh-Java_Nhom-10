@@ -1,5 +1,16 @@
 const Products = document.querySelector(".box");
 
+window.addEventListener("DOMContentLoaded", () => {
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (loggedInUser) {
+    document.querySelector(".header_account i").className =
+      "fa-solid fa-right-from-bracket";
+  } else {
+    document.querySelector(".header_account").innerHTML =
+      '<i class="fa-regular fa-user"></i>';
+  }
+});
+
 const getData = async () => {
   const response = await fetch("data.json");
   const data = await response.json();
@@ -28,7 +39,7 @@ const getData = async () => {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
               </div>
-              <a href="product_details.html" class="btn">View</a>
+              <a href="product_details.html?id=${item.id}" class="btn">View</a>
             </div>
           </div>
         </div>
@@ -38,10 +49,21 @@ const getData = async () => {
       .join("");
   }
 };
-
 getData();
 
 function functio(small) {
   var full = document.getElementById("imgbox");
   full.src = small.src;
 }
+const Account = document.querySelector(".header_account");
+
+function logout() {
+  localStorage.removeItem("loggedInUser");
+  document.querySelector(
+    ".header_account"
+  ).innerHTML = `<i class="fa-regular fa-user"></i>`;
+
+  window.location.href = "login.html";
+}
+
+Account.addEventListener("click", logout);

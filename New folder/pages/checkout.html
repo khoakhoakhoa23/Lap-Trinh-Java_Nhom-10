@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../Css/product.css" />
+    <link rel="stylesheet" href="../Css/checkout.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -20,15 +20,15 @@
           <h1>KOI<span>.</span>FISH</h1>
         </div>
         <ul>
-          <li><a href="../index.html">Trang chủ</a></li>
+          <li><a href="../index.html" class="active"></a>Trang chủ</a></li>
           <li><a href="introduce.html">Giới thiệu</a></li>
-          <li><a href="Fish.html" class="active">Sản phẩm</a></li>
+          <li><a href="Fish.html">Sản phẩm</a></li>
           <li><a href="blog.html">Tin tức</a></li>
           <li><a href="contact.html">Liên hệ</a></li>
         </ul>
         <div class="icons">
-          <a href="checkout.html"><i class="fa-solid fa-cart-shopping"></i></a>
-
+          <i class="fa-solid fa-cart-shopping"></i>
+          
           <a href="../Login/login.html" class="header_account"
             ><i class="fa-regular fa-user"></i
           ></a>
@@ -37,17 +37,22 @@
       <div class="main" id="home">
         <div class="main-container">
           <div class="main-text">
-            <h1>THẾ GIỚI CÁ KOI NHẬT BẢN - CHẤT LƯỢNG HÀNG ĐẦU</h1>
+            <h1>
+              CÁ KOI NHẬT BẢN CHẤT LƯỢNG CAO NHẤT (NISHIKIGOI) <br />
+              ĐƯỢC BÁN TỪ NIIGATA, NHẬT BẢN
+            </h1>
             <p>
-              Thế Giới Cá Koi Nhật Bản - Chất Lượng Hàng Đầu là nơi hội tụ những
-              chú cá Koi Nhật Bản cao cấp nhất, đặc biệt được chọn lọc từ
-              Niigata – quê hương của dòng cá Nishikigoi huyền thoại. Chúng tôi
-              tự hào mang đến cho khách hàng những chú cá Koi với màu sắc rực
-              rỡ, hoa văn tinh tế và sức khỏe vượt trội. Mỗi chú cá đều được
-              chăm sóc kỹ lưỡng và nuôi dưỡng trong môi trường chuẩn Nhật Bản,
-              đảm bảo đạt tiêu chuẩn chất lượng cao nhất. Đến với Thế Giới Cá
-              Koi Nhật Bản, bạn sẽ có cơ hội sở hữu những tuyệt phẩm Koi quý
-              hiếm, nâng tầm vẻ đẹp cho không gian sống của bạn.
+              Cá Koi Nhật Bản chất lượng cao là biểu tượng của sự may mắn, thịnh
+              vượng và kiên trì trong văn hóa Nhật Bản. Được nuôi dưỡng và chọn
+              lọc kỹ lưỡng qua nhiều thế hệ, cá Koi cao cấp có màu sắc rực rỡ,
+              đa dạng và hoa văn đặc biệt, tạo nên giá trị thẩm mỹ cao. Để đạt
+              được chất lượng cao nhất, cá Koi cần môi trường nước sạch, thức ăn
+              dinh dưỡng và sự chăm sóc tỉ mỉ. Ngoài ra, giống cá cũng đóng vai
+              trò quan trọng trong việc quyết định độ đẹp và độ khỏe mạnh của
+              cá. Những con cá Koi xuất sắc thường có giá trị rất cao, không chỉ
+              về mặt kinh tế mà còn về tinh thần, được xem như biểu tượng của sự
+              trường thọ và hạnh phúc trong văn hóa người nuôi cá trên khắp thế
+              giới.
             </p>
           </div>
           <div class="main-img">
@@ -66,43 +71,66 @@
         </div>
       </div>
     </section>
-    <!---Product---->
-    <section class="Products">
-      <div class="product">
-        <h1>Koi Kohaku</h1>
-
-        <div class="boxs">
-          <div class="card">
-            <div class="small-carts">
-              <i class="fa-solid fa-heart"></i>
-              <i class="fa-solid fa-share"></i>
-            </div>
-            <div class="img">
-              <img src="../img/koi1.jpg" alt="" />
-            </div>
-            <div class="product-info">
-              <h2>Tancho Kohaku</h2>
-              <p>
-                Tancho kohaku 84 cm 4 tuổi có nguồn gốc từ Dainichi có hình thể
-                đẹp mắt, dù mới 4 tuổi nhưng kích thước đã lên đến 84cm. Hoa văn
-                đẹp, màu sắc rõ nét, hình thể đẹp, khỏe mạnh, vạm vỡ, body rắn
-                chắc.
-              </p>
-              <h3>300.000<sup>đ</sup></h3>
-              <div class="product-star">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-              </div>
-              <a href="details.html" class="btn">View</a>
-            </div>
+  <section class="container">
+    <div class="cart" >
+        <table width="100%">
+          <thead>
+            <tr>
+              <td>Remove</td>
+              <td>Image</td>
+              <td>Product</td>
+              <td>Price</td>
+              <td>Quantity</td>
+              <td>Total</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <a href=""><i class="fa-regular fa-circle-xmark"></i></a>
+              </td>
+              <td>
+                <img src="../img/koi1.jpg" alt="" />
+              </td>
+              <td>Koi Kohaku</td>
+              <td>300.000<sup>đ</sup></td>
+              <td><input type="number" value="1" name="" id="" /></td>
+              <td>300.000<sup>đ</sup></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <div class="cart-add" >
+        <div class="coupon">
+          <h3>Apply coupon</h3>
+          <div>
+            <input type="text" placeholder="Enter you coupon" />
+            <button class="normal">Apply</button>
           </div>
+        </div>
+  
+        <div class="total">
+          <h3>Cart total</h3>
+          <table>
+            <tr>
+              <td>Cart total:</td>
+              <td>300.000<sup>đ</sup></td>
+            </tr>
+            <tr>
+              <td>Shipping:</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+              <td><strong>Total:</strong></td>
+              <td>
+                <strong>300.000<sup>đ</sup></strong>
+              </td>
+            </tr>
+          </table>
+          <button class="normal">Proceed to checkout</button>
         </div>
       </div>
     </section>
-
     <!--Footer-->
     <footer>
       <div class="footer_main">
@@ -155,6 +183,6 @@
         </div>
       </div>
     </footer>
-    <script src="details.js"></script>
+    <script src="checkout.js"></script>
   </body>
 </html>
