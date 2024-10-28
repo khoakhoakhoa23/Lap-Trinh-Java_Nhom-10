@@ -9,6 +9,7 @@ function reg(event) {
   event.preventDefault();
   let username = document.getElementById("regEmail").value.trim();
   let password = document.getElementById("regPass").value.trim();
+  let phone = document.getElementById("regPhone").value.trim();
   let email = document.getElementById("confirmPass").value.trim();
   let regMess = document.getElementById("regMess");
 
@@ -16,7 +17,7 @@ function reg(event) {
   let upperCaseLetter = /[A-Z]/g;
   let number = /[0-9]/g;
 
-  if (!username || !password || !email) {
+  if (!username || !password || !email || !phone) {
     regMess.innerText = "Please fill your information!";
     return;
   }
@@ -42,6 +43,7 @@ function reg(event) {
     username: username,
     password: password,
     email: email,
+    phone: phone,
   };
   let users = localStorage.getItem("users")
     ? JSON.parse(localStorage.getItem("users"))
