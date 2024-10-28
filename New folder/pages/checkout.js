@@ -118,7 +118,7 @@ let totalPro = async () => {
                 </td>
               </tr>
             </table>
-            <button class="normal">Proceed to checkout</button>
+            <button class="normal">Proceed to checkout</button>     
           </div>
       `;
   } else return;
