@@ -6,6 +6,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   width: 15px;
@@ -188,10 +189,10 @@ section .main .button:hover i {
 }
 .product .box {
   width: 90%;
-  margin: 0 auto;
+  margin: 10px auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 25px 0;
+  grid-gap: 25px 10px;
 }
 .product .box .card {
   width: 290px;
@@ -340,7 +341,7 @@ section .main .button:hover i {
 /*Service*/
 .service {
   width: 70%;
-  margin: 0 auto;
+  margin: 70px auto;
   text-align: center;
   padding: 80px 0 10px 0;
 }

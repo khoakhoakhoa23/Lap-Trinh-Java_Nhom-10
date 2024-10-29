@@ -6,6 +6,7 @@
 }
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   width: 15px;
@@ -234,6 +235,11 @@ section .main .button:hover i {
   background-color: #088178;
   color: #fff;
   padding: 12px 20px;
+  cursor: pointer;
+}
+.coupon button:hover,
+.total button:hover {
+  background-color: #066b5c; /* Slightly darker shade for hover */
 }
 .total {
   width: 50%;
