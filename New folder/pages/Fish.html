@@ -73,7 +73,24 @@
     </section>
     <!---Product---->
     <section class="Products">
-      <div class="product">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="search-inp"
+          placeholder="Search...."
+          aria-label="Recipient's username"
+          aria-describedby="button-addon2"
+        />
+        <button
+          class="btn btn-outline-secondary bg-warning"
+          type="button"
+          id="button-addon2"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="product" id="body">
         <h1>Các loại cá</h1>
 
         <div class="box">
@@ -161,5 +178,6 @@
       </div>
     </footer>
     <script src="main.js"></script>
+    <script src="../java/function.js"></script>
   </body>
 </html>

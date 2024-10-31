@@ -255,6 +255,41 @@ section .main .button:hover i {
   background: linear-gradient(to right, #604141, #412f2f);
   color: white;
 }
+.input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+#search-inp {
+  display: block;
+  visibility: visible;
+}
+.input-group input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+/* Style for the search button */
+.input-group button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #f0c14b; /* Yellow color */
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.input-group button:hover {
+  background-color: #e2b13c; /* Darker yellow on hover */
+}
 
 /*footer*/
 footer {

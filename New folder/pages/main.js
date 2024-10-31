@@ -18,7 +18,7 @@ const getData = async () => {
     Products.innerHTML = data
       .map((item) => {
         return `
-       <div class="product">
+       <div class="product" id="body">
          <div class="box">
           <div class="card">
             <div class="small-cart">
