@@ -11,16 +11,16 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/order-details")
+@RequestMapping("/order-details")
 public class OrderDetailController {
 
     @Autowired
     private OrderDetailRepo orderDetailRepo;
 
     // 1. Lấy danh sách tất cả chi tiết đơn hàng theo orderId
-    @GetMapping("/{orderId}")
-    public ResponseEntity<List<OrderDetail>> getAllOrderDetails(@PathVariable Long orderId) {
-        List<OrderDetail> orderDetails = orderDetailRepo.findByOrderId(orderId);
+    @GetMapping
+    public ResponseEntity<List<OrderDetail>> getAllOrderDetails() {
+        List<OrderDetail> orderDetails = orderDetailRepo.findAll();
         if (orderDetails.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -28,14 +28,14 @@ public class OrderDetailController {
     }
 
     // 2. Thêm chi tiết đơn hàng mới
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<String> addOrderDetail(@RequestBody OrderDetail orderDetail) {
         orderDetailRepo.save(orderDetail);
         return new ResponseEntity<>("Order detail added successfully", HttpStatus.CREATED);
     }
 
     // 3. Cập nhật chi tiết đơn hàng
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateOrderDetail(@PathVariable Long id, @RequestBody OrderDetail updatedOrderDetail) {
         Optional<OrderDetail> existingOrderDetail = orderDetailRepo.findById((long) Math.toIntExact(id));
         if (existingOrderDetail.isEmpty()) {
@@ -49,7 +49,7 @@ public class OrderDetailController {
     }
 
     // 4. Xóa chi tiết đơn hàng
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<String> removeOrderDetail(@PathVariable Long id) {
         Optional<OrderDetail> existingOrderDetail = orderDetailRepo.findById((long) Math.toIntExact(id));
         if (existingOrderDetail.isEmpty()) {

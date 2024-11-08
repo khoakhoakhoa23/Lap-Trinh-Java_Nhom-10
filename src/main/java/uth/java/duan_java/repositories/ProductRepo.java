@@ -11,9 +11,11 @@ import java.util.Optional;
 public interface ProductRepo extends JpaRepository<Product, Long> {
     // Tìm sản phẩm theo tên
     @Query("SELECT p FROM Product p WHERE p.name = :name")
-    Optional<Product> findByName(@Param("name") String name);
+    Product findByName(@Param("name") String productName);
 
     // Tìm danh sách sản phẩm theo danh mục
     @Query("SELECT p FROM Product p WHERE p.category = :category")
     List<Product> findByCategoryId(@Param("category") String categoryId);
+
+
 }

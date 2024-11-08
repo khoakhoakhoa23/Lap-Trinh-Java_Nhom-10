@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/orders")
+@RequestMapping()
 public class OrderController {
 
     @Autowired
@@ -36,14 +36,14 @@ public class OrderController {
     }
 
     // 3. Tạo đơn hàng mới
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<String> createOrder(@RequestBody Order order) {
         orderRepo.save(order);
         return new ResponseEntity<>("Order created successfully", HttpStatus.CREATED);
     }
 
     // 4. Cập nhật đơn hàng
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateOrder(@PathVariable Long id, @RequestBody Order updatedOrder) {
         Optional<Order> existingOrder = orderRepo.findById((long) Math.toIntExact(id));
         if (existingOrder.isEmpty()) {
@@ -57,7 +57,7 @@ public class OrderController {
     }
 
     // 5. Xóa đơn hàng
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> removeOrder(@PathVariable Long id) {
         Optional<Order> existingOrder = orderRepo.findById((long) Math.toIntExact(id));
         if (existingOrder.isEmpty()) {

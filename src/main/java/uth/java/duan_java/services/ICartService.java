@@ -6,7 +6,8 @@ import uth.java.duan_java.models.dtos.UserDTO;
 import java.util.List;
 
 public interface ICartService {
-    List<CartDTO> getCarts();
+    // Lấy tất cả giỏ hàng
+    List<CartDTO> getAllCarts();
 
     CartDTO getCartById(long id);
 

@@ -13,4 +13,6 @@ public interface ICartItemService {
     CartItemDTO updateCartItem(CartItemDTO cartItem, long id);
 
     boolean deleteCartItem(long id);
+
+    boolean removeAllCartItemByCartID(long cartId);
 }

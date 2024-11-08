@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Data
@@ -18,4 +18,5 @@ public class CartDTO {
 
     @JsonIgnore
     private UserDTO user;
+
 }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/products")
 public class ProductController {
 
     @Autowired
@@ -35,14 +35,14 @@ public class ProductController {
     }
 
     // 3. Thêm sản phẩm mới
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<String> addProduct(@RequestBody Product product) {
         productRepo.save(product);
         return new ResponseEntity<>("Product added successfully", HttpStatus.CREATED);
     }
 
     // 4. Cập nhật sản phẩm
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
         Optional<Product> existingProduct = productRepo.findById(id);
         if (existingProduct.isEmpty()) {
@@ -58,7 +58,7 @@ public class ProductController {
     }
 
     // 5. Xóa sản phẩm
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> removeProduct(@PathVariable Long id) {
         Optional<Product> existingProduct = productRepo.findById(id);
         if (existingProduct.isEmpty()) {

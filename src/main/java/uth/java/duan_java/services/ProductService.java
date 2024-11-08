@@ -29,6 +29,7 @@ public class ProductService implements IProductService {
         }
         return modelMapper.map(products, new TypeToken<List<CartItemDTO>>(){}.getType());
     }
+
     @Override
     public ProductDTO getProductById(long id){
         Product product = productRepo.findById((long) id)
@@ -38,6 +39,12 @@ public class ProductService implements IProductService {
     @Override
     public ProductDTO createProduct(ProductDTO product){
         Product newProduct = modelMapper.map(product, Product.class);
+
+        Product existingProduct = productRepo.findByName(product.getName());
+        if (existingProduct != null) {
+            throw new RuntimeException("Product already exists");
+        }
+
         newProduct = productRepo.save(newProduct);
         return modelMapper.map(newProduct, ProductDTO.class);
     }

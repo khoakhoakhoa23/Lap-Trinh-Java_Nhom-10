@@ -46,7 +46,7 @@ public class UserController {
     }
 
     // 4. Cập nhật thông tin người dùng
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody UserDTO updatedUser) {
         UserDTO user = userService.updateUser(updatedUser,id);
         return new ResponseEntity<>("User updated successfully", HttpStatus.OK);

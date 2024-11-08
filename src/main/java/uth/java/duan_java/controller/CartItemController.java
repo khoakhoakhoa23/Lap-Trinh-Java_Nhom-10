@@ -6,62 +6,57 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uth.java.duan_java.models.entities.CartItem;
 import uth.java.duan_java.repositories.CartItemRepo;
+
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/cart/items")
+@RequestMapping("cartitems")
 public class CartItemController {
 
     @Autowired
     private CartItemRepo cartItemRepo;
 
     // 1. Lấy danh sách tất cả sản phẩm trong giỏ hàng theo cartId
-    @GetMapping("/{cartId}")
-    public ResponseEntity<List<CartItem>> getAllCartItems(@PathVariable Long cartId) {
-        List<CartItem> cartItems = cartItemRepo.findByCartId(cartId);
-        if (cartItems.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(cartItems, HttpStatus.OK);
+    @GetMapping()
+    public ResponseEntity<List<CartItem>> getAllCartItems() {
+        List<CartItem> cartItems = cartItemRepo.findAll();
+        return cartItems.isEmpty()
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.ok(cartItems);
     }
 
     // 2. Thêm sản phẩm vào giỏ hàng
-    @PostMapping("/add")
+    @PostMapping("/{id}")
     public ResponseEntity<String> addCartItem(@RequestBody CartItem cartItem) {
-        // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-        Optional<CartItem> existingCartItem = cartItemRepo.findByCartIdAndProductId(cartItem.getCart().getCartId(), cartItem.getProduct().getId());
-        if (existingCartItem.isPresent()) {
-            return new ResponseEntity<>("Product already exists in cart", HttpStatus.CONFLICT);
+        boolean exists = cartItemRepo.findByCartIdAndProductId(cartItem.getCart().getCartId(), cartItem.getProduct().getProductId()).isPresent();
+        if (exists) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Product already exists in cart");
         }
-
         cartItemRepo.save(cartItem);
-        return new ResponseEntity<>("Cart item added successfully", HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Cart item added successfully");
     }
 
     // 3. Cập nhật sản phẩm trong giỏ hàng
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateCartItem(@PathVariable Long id, @RequestBody CartItem updatedCartItem) {
-        Optional<CartItem> existingCartItem = cartItemRepo.findById(id);
-        if (existingCartItem.isEmpty()) {
-            return new ResponseEntity<>("Cart item not found", HttpStatus.NOT_FOUND);
-        }
-
-        CartItem cartItem = existingCartItem.get();
-        cartItem.setQuantity(updatedCartItem.getQuantity()); // Cập nhật số lượng
-        cartItemRepo.save(cartItem);
-        return new ResponseEntity<>("Cart item updated successfully", HttpStatus.OK);
+        return cartItemRepo.findById(id)
+                .map(cartItem -> {
+                    cartItem.setQuantity(updatedCartItem.getQuantity());
+                    cartItemRepo.save(cartItem);
+                    return ResponseEntity.ok("Cart item updated successfully");
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cart item not found"));
     }
 
     // 4. Xóa sản phẩm khỏi giỏ hàng
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> removeCartItem(@PathVariable Long id) {
-        Optional<CartItem> existingCartItem = cartItemRepo.findById(id);
-        if (existingCartItem.isEmpty()) {
-            return new ResponseEntity<>("Cart item not found", HttpStatus.NOT_FOUND);
-        }
-
-        cartItemRepo.delete(existingCartItem.get());
-        return new ResponseEntity<>("Cart item removed successfully", HttpStatus.OK);
+        return cartItemRepo.findById(id)
+                .map(cartItem -> {
+                    cartItemRepo.delete(cartItem);
+                    return ResponseEntity.ok("Cart item removed successfully");
+                })
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cart item not found"));
     }
 }

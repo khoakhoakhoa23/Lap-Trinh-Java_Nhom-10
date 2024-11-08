@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/reviews")
+@RequestMapping("/reviews")
 public class ReviewController {
 
     @Autowired
     private ReviewRepo reviewRepo;
 
     // 1. Lấy danh sách tất cả đánh giá cho sản phẩm
-    @GetMapping("/{productId}")
+    @GetMapping()
     public ResponseEntity<List<Review>> getAllReviews(@PathVariable Long productId) {
         List<Review> reviews = reviewRepo.findByProductId(productId);
         if (reviews.isEmpty()) {
@@ -28,14 +28,14 @@ public class ReviewController {
     }
 
     // 2. Thêm đánh giá mới
-    @PostMapping("/add")
+    @PostMapping()
     public ResponseEntity<String> addReview(@RequestBody Review review) {
         reviewRepo.save(review);
         return new ResponseEntity<>("Review added successfully", HttpStatus.CREATED);
     }
 
     // 3. Cập nhật đánh giá
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateReview(@PathVariable Long id, @RequestBody Review updatedReview) {
         Optional<Review> existingReview = reviewRepo.findById((long) Math.toIntExact(id));
         if (existingReview.isEmpty()) {
@@ -50,7 +50,7 @@ public class ReviewController {
     }
 
     // 4. Xóa đánh giá
-    @DeleteMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> removeReview(@PathVariable Long id) {
         Optional<Review> existingReview = reviewRepo.findById((long) Math.toIntExact(id));
         if (existingReview.isEmpty()) {
