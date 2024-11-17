@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuyến đi</title>
+    <link rel="stylesheet" href="/css/trip.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <section>
+      <div th:replace="~{header :: header}"></div>
+      <div class="main" id="home">
+        <div class="main-container">
+          <div class="main-text">
+            <h1>KOI NHẬT BẢN CAO CẤP - NISHIKIGOI CHẤT LƯỢNG TỪ NIIGATA"</h1>
+            <p>
+              Chuyến đi cá koi là một trải nghiệm thú vị và độc đáo cho những ai
+              yêu thích thiên nhiên và sự yên bình. Bạn sẽ được đến những hồ cá
+              koi tuyệt đẹp, nơi những con cá koi đủ màu sắc bơi lội trong làn
+              nước trong xanh. Không khí trong lành và âm thanh của nước chảy
+              tạo nên một không gian thư giãn tuyệt vời. Trong chuyến đi, bạn có
+              thể tham gia vào việc cho cá ăn, tìm hiểu về lịch sử và ý nghĩa
+              của cá koi trong văn hóa Nhật Bản. Những buổi chiều dạo bộ quanh
+              hồ hoặc ngồi bên bờ nước, ngắm nhìn những con cá tung tăng bơi
+              lội, chắc chắn sẽ mang lại cho bạn cảm giác bình yên và hạnh phúc.
+              Đừng quên chụp lại những khoảnh khắc đẹp để lưu giữ kỷ niệm trong
+              chuyến đi này!
+            </p>
+          </div>
+          <div class="main-img">
+            <img src="/images/koi.png" alt="" />
+          </div>
+        </div>
+        <div class="social-icons">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-weibo"></i>
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+        <div class="button">
+          <a href="#Trips">Tìm hiểu ngay</a>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+    </section>
+    <section id="Trips">
+      <div class="about">
+        <div class="about_main">
+          <div class="about_img">
+            <div class="img_container">
+              <img src="/images/trip.jpg" alt="" id="imgbox" />
+            </div>
+          </div>
+          <div class="about_text">
+            <p>
+              <strong>Sakai Fish Farm</strong> <br />
+              Lịch sử chăn nuôi cá Koi của Sakai Fish Farm bắt nguồn từ hơn 130
+              năm trước. Khoảng năm 1890, người sáng lập của trại cá Sakai – ông
+              Ichiroji Sakai đã bắt đầu nhân giống cá Koi Magoi với mục đích làm
+              thực phẩm. Sau đó ông Tadamichi Sakai đã sử dụng những con cá
+              Magoi đó để lai tạo ra cá Koi khác để làm cá cảnh. Đến thế hệ tiếp
+              theo, ông Koji Sakai (cha của Kentaro Sakai – CEO hiện tại của
+              Sakai Fish Farm) quyết định kinh doanh cá Koi. Thế mạnh của trại
+              cá Koi Sakai là lai tạo cá Koi Kohaku và Sanke. Kể từ khi đạt được
+              giải Grand Champion All Japan Koi Show năm 2000, Sakai Fish Farm
+              tiếp tục đạt giải quán quân 11 lần cho đến năm 2020.
+            </p>
+          </div>
+        </div>
+      </div>
+      <a href="/Fish" class="about_btn">Welcome!</a>
+      <div class="contact">
+        <p>
+          Muốn tận hưởng chuyến đi và có nhiều chú cá koi đẹp, hãy liên hệ chúng
+          tôi <br />
+          <a href="mailto:Nhom10@gmail.com">Nhom10@gmail.com</a>
+        </p>
+      </div>
+    </section>
+    <!--Footer-->
+    <footer th:replace="~{footer :: footer}"></footer>
+    <script src="/js/trip.js"></script>
+  </body>
+</html>
