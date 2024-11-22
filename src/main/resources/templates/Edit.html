@@ -30,7 +30,8 @@
         color: #333;
     }
 
-    input,textarea {
+    input,textarea, select {
+        font-family: Arial, sans-serif; /* Đảm bảo font chữ giống nhau */
         width: 90%; /* Điều chỉnh độ rộng để có khoảng trống hai bên */
         padding: 10px;
         margin: 10px auto; /* Căn giữa theo chiều ngang */
@@ -64,6 +65,12 @@
     <form id="editProductForm">
         <input type="number" id="productId" min="0" placeholder="Nhập ID sản phẩm cần sửa" required />
         <input type="text" id="name" placeholder="Tên sản phẩm" required />
+        <select id=origin>
+            <option value="">Chọn nguồn gốc</option>
+            <option value="Sakai Fish Farm">Sakai Fish Farm</option>
+            <option value="Takeda Koi Farm">Takeda Koi Farm</option>
+            <option value="Ogata Koi Farm">Ogata Koi Farm</option>
+        </select>
         <textarea id="description" placeholder="Mô tả sản phẩm" required></textarea>
         <input type="number" id="price" min="0" placeholder="Giá sản phẩm" required />
         <input type="text" id="imageUrl" placeholder="URL hình ảnh sản phẩm" required />
@@ -81,7 +88,8 @@
             description: document.getElementById("description").value,
             price: parseFloat(document.getElementById("price").value),
             imageUrl: document.getElementById("imageUrl").value,
-            rating: parseFloat(document.getElementById("rating").value)
+            rating: parseFloat(document.getElementById("rating").value),
+            origin: document.getElementById("origin").value,
         };
 
         // Gửi yêu cầu PUT đến API để sửa sản phẩm

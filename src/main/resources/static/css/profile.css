@@ -68,7 +68,7 @@ section nav ul li a.active {
 }
 
 section nav .icons {
-  max-width: 0 4px;
+  max-width: 4px;
   cursor: pointer;
   font-size: 18px;
   transition: 0.3ms;
@@ -175,16 +175,36 @@ body {
   border: 2px solid #333;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 350px;
+  width: 300px; /* Chiều rộng của các thẻ card */
   padding: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0; /* Không có margin bên ngoài */
 }
 .card h2,
 .card h3 {
   margin: 10px 0;
   color: #333;
+}
+.table-container {
+  display: flex; /* Đặt container sử dụng Flexbox */
+  justify-content: space-between; /* Căn giữa các card đều nhau */
+  gap: 20px; /* Khoảng cách giữa các thẻ card */
+  margin: 20px;
+  flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ không gian */
+  justify-content: center; /* Căn giữa khi màn hình rộng */
+}
+/* Điều chỉnh cho các màn hình nhỏ */
+@media (max-width: 768px) {
+  .table-container {
+    flex-direction: column; /* Các thẻ card xếp theo chiều dọc trên màn hình nhỏ */
+    gap: 10px;
+  }
+  .card {
+    width: 100%; /* Các thẻ card chiếm toàn bộ chiều rộng */
+  }
 }
 .info {
   text-align: left;

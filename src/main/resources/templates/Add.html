@@ -28,7 +28,8 @@
     color: #333;
   }
 
-  input {
+  input, textarea, select {
+    font-family: Arial, sans-serif; /* Đảm bảo font chữ giống nhau */
     width: 90%; /* Điều chỉnh độ rộng để có khoảng trống hai bên */
     padding: 10px;
     margin: 10px auto; /* Căn giữa theo chiều ngang */
@@ -62,7 +63,10 @@
   <h2>Thêm sản phẩm mới</h2>
   <form id="addProductForm">
     <input type="text" id="name" placeholder="Tên sản phẩm" required />
-    <input type="text" id="description" placeholder="Mô tả sản phẩm" required />
+    <select id=origin>
+      <option value="">Chọn nguồn gốc</option>
+    </select>
+    <textarea id="description" placeholder="Mô tả sản phẩm" required></textarea>
     <input type="number" id="price" min="0" placeholder="Giá" required />
     <input type="text" id="imageUrl" placeholder="URL hình ảnh" required />
     <input type="number" id="rating" placeholder="Đánh giá" step="0.5" min="0" max="5" required />
@@ -79,17 +83,18 @@
       description: document.getElementById("description").value,
       price: parseFloat(document.getElementById("price").value),
       imageUrl: document.getElementById("imageUrl").value,
-      rating: parseFloat(document.getElementById("rating").value)
+      rating: parseFloat(document.getElementById("rating").value),
+      origin: document.getElementById("origin").value,
     };
 
     // Kiểm tra dữ liệu
-    if (!newProduct.name || !newProduct.description || !newProduct.price || !newProduct.imageUrl || !newProduct.rating) {
+    if (!newProduct.name || !newProduct.description || !newProduct.price || !newProduct.imageUrl || !newProduct.rating || !newProduct.origin) {
       alert("Vui lòng điền đầy đủ thông tin sản phẩm!");
       return;
     }
 
     // Gửi yêu cầu POST đến API
-    fetch('http://localhost:8080/products', {
+    fetch('/products/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -111,6 +116,21 @@
               console.error('Có lỗi xảy ra:', error);
               alert('Đã xảy ra lỗi khi thêm sản phẩm!');
             });
+  });
+  // Khi trang tải xong, lấy dữ liệu từ server và chèn vào <select>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch('/trips')
+            .then(response => response.json())
+            .then(data => {
+              const select = document.getElementById('origin');
+              data.forEach(trips => {
+                const option = document.createElement('option');
+                option.value = trips.name;
+                option.textContent = trips.name;
+                select.appendChild(option);
+              });
+            })
+            .catch(error => console.error('Error fetching locations:', error));
   });
 </script>
 </body>

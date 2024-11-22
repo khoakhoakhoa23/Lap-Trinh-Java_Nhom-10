@@ -83,7 +83,7 @@ section nav ul li a.active {
 }
 
 section nav .icons {
-  max-width: 0 4px;
+  max-width: 4px;
   cursor: pointer;
   font-size: 18px;
   transition: 0.3ms;
@@ -180,7 +180,7 @@ section .main .button:hover i {
   padding: 35px 0;
 }
 .about h1 {
-  font-size: 60x;
+  font-size: 60px;
   margin-top: 20px;
   display: flex;
   align-items: center;

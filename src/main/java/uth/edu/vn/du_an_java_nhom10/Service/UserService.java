@@ -1,6 +1,7 @@
 package uth.edu.vn.du_an_java_nhom10.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import uth.edu.vn.du_an_java_nhom10.Model.Product;
 import uth.edu.vn.du_an_java_nhom10.Model.User;
 import uth.edu.vn.du_an_java_nhom10.Repository.UserRepository;
 
@@ -33,5 +34,13 @@ public class UserService {
 
     public Optional<User> findById(Long id) {
         return userRepository.findById(id);
+    }
+    public boolean deleteUser(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            userRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

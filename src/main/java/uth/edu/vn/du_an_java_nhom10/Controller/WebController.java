@@ -33,8 +33,18 @@ public class WebController {
     }
     @GetMapping("/Trip")
     public String trip(HttpSession session, Model model) {
+        // Lấy userId từ session
         Long userId = (Long) session.getAttribute("loggedInUserId");
-        model.addAttribute("userId", userId);
+
+        if (userId != null) {
+            // Lấy thông tin người dùng từ service bằng userId
+            Optional<User> userOptional = userService.findById(userId);
+
+            if (userOptional.isPresent()) {
+                // Thêm đối tượng user vào model
+                model.addAttribute("user", userOptional.get());
+            }
+        }
         model.addAttribute("currentUrl", "/Trip");
         return "trip";
     }
@@ -58,6 +68,18 @@ public class WebController {
         model.addAttribute("userId", userId);
         model.addAttribute("currentUrl", "/Contact");
         return "contact";
+    }
+    @GetMapping("/Return")
+    public String returnFish(HttpSession session, Model model) {
+        Long userId = (Long) session.getAttribute("loggedInUserId");
+        model.addAttribute("userId", userId);
+        return "return";
+    }
+    @GetMapping("/Payment")
+    public String payment(HttpSession session, Model model) {
+        Long userId = (Long) session.getAttribute("loggedInUserId");
+        model.addAttribute("userId", userId);
+        return "thanhtoan";
     }
     @GetMapping("/Pay")
     public String Pay(Model model) {
@@ -95,5 +117,46 @@ public class WebController {
             }
         }
         return "header";  // Trả về view (thường là một file HTML)
+    }
+    @GetMapping("/AddT")
+    public String addT(Model model) {
+        return "AddTrip";
+    }
+    @GetMapping("/DeleteT")
+    public String deleteT(Model model) {
+        return "DeleteTrip";
+    }
+    @GetMapping("/EditT")
+    public String EditT(Model model) {
+        return "EditTrip";
+    }
+    @GetMapping("/BookFish")
+    public String BookFish(Model model) {
+        model.addAttribute("currentUrl", "/BookFish");
+        return "first";
+    }
+    @GetMapping("/Admin")
+    public String Admin( Model model) {
+        return "admin_page";
+    }
+    @GetMapping("/AdminProduct")
+    public String AdminProduct( Model model) {
+        return "admin_products";
+    }
+    @GetMapping("/AdminTrip")
+    public String AdminTrip( Model model) {
+        return "admin_Trips";
+    }
+    @GetMapping("/AdminOrderFish")
+    public String AdminOrderFish( Model model) {
+        return "admin_orders";
+    }
+    @GetMapping("/AdminOrderTrip")
+    public String AdminOrderTrip( Model model) {
+        return "admin_trip";
+    }
+    @GetMapping("/AdminUser")
+    public String AdminUser( Model model) {
+        return "admin_users";
     }
 }

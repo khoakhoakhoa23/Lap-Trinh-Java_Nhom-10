@@ -83,7 +83,7 @@ section nav ul li a.active {
 }
 
 section nav .icons {
-  max-width: 0 4px;
+  max-width: 4px;
   cursor: pointer;
   font-size: 18px;
   transition: 0.3ms;

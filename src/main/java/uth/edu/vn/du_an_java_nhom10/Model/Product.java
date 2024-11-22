@@ -1,8 +1,5 @@
 package uth.edu.vn.du_an_java_nhom10.Model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 @Entity
 public class Product {
@@ -12,10 +9,13 @@ public class Product {
     private Long id;
 
     private String name;
+    @Lob  // Đánh dấu trường này là một chuỗi dài
+    @Column(columnDefinition = "TEXT")
     private String description;
     private Double price;
     private String imageUrl;
     private Double rating;
+    private String origin;
 
     // Getters and Setters
     public Long getId() {
@@ -64,5 +64,13 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 }

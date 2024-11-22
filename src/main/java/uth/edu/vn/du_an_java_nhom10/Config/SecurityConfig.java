@@ -13,9 +13,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .requestMatchers(HttpMethod.POST, "/products").permitAll()
-                .requestMatchers(HttpMethod.POST, "/products/delete/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/products/edit/**").permitAll();
+                .requestMatchers("/admin/login").permitAll()
+                .requestMatchers("/admin/**").authenticated();
         // Đảm bảo CSRF vẫn được tắt trong trường hợp cần thiết, tuy nhiên có thể gây rủi ro
         http.csrf().disable();
         return http.build();

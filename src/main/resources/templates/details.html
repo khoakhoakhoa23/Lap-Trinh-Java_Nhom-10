@@ -54,19 +54,20 @@
         <div class="s-p-image">
           <img id="productImage" width="100%" alt="Product Image" />
         </div>
-        <div class="single-pro-details">
+        <div class="single-pro-details" style="width: 50%">
           <h4 id="productName"></h4> <!-- Tên sản phẩm -->
           <h2 id="productPrice"></h2> <!-- Giá sản phẩm -->
-          <select>
-            <option>Select color</option>
-            <option>White</option>
-            <option>Black</option>
-          </select>
-          <input type="number" value="1" min="0"/>
-          <button id="btn-cart" onclick="AddToCart()">Add to cart</button>
-          <h4>Product detail</h4>
+          <h4>Chi tiết sản phẩm</h4>
           <div class="info">
+            <span id="productOrigin"></span> </br>
             <span id="productDescription"></span> <!-- Mô tả sản phẩm -->
+          </div>
+          <div class="cart">
+            <input type="number" value="1" min="0"/>
+            <div class="buttons">
+              <button id="btn-cart" onclick="AddToCart()"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+              <button id="btn" onclick="BookFish()">Đặt trước</button>
+            </div>
           </div>
         </div>
       </div>

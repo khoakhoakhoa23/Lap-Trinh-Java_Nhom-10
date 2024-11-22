@@ -19,6 +19,16 @@ html {
   border-radius: 5px;
   background: #fff;
 }
+section {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+section a{
+  text-decoration: none;
+  color: black;
+}
 .header_account_icon.logged-in i {
   color: red; /* Change icon color to red when logged in */
 }
@@ -29,16 +39,6 @@ html {
   background-color: white; /* Optional styling */
   border: 1px solid #ddd; /* Optional */
   padding: 10px; /* Optional */
-}
-section {
-  width: 100%;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-}
-section a{
-  text-decoration: none;
-  color: black;
 }
 section nav {
   display: flex;
@@ -198,13 +198,15 @@ section .main .button:hover i {
 }
 .about .about_main {
   position: relative;
-  top: 40%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 50px;
+  margin: 0;
+  padding: 0;
+  gap: 0;
 }
 .about .about_main .about_img {
   display: flex;
@@ -266,7 +268,7 @@ section .main .button:hover i {
   background: none;
   position: relative;
   top: 10%;
-  left: 46%;
+  left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px 25px;
   border: 2px solid #604141;
@@ -282,6 +284,111 @@ section .main .button:hover i {
 }
 .contact a {
   text-decoration: none;
+}
+.input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+#search-inp {
+  display: block;
+  visibility: visible;
+}
+.input-group input[type="text"] {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  z-index: 10;
+  position: relative;
+}
+.input-group button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #f0c14b; /* Yellow color */
+  border: 1px solid #ccc;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.input-group button:hover {
+  background-color: #e2b13c; /* Darker yellow on hover */
+}
+.contact form {
+  margin: 2rem auto;
+  background-color: var(--light-bg);
+  border-radius: 0.5rem;
+  border: 1px solid black;
+  padding: 2rem;
+  max-width: 50rem;
+  text-align: center;
+}
+
+.contact form h3 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.contact form .box {
+  margin: 1rem 0;
+  width: 100%;
+  border: 1px solid black;
+  background-color: var(--white);
+  padding: 1.2rem 1.4rem;
+  font-size: 1.8rem;
+  color: var(--black);
+  border-radius: 0.5rem;
+}
+
+.contact form textarea {
+  height: 20rem;
+  resize: none;
+}
+.btn {
+  background-color: #dfb767; /* Màu nền */
+  color: white; /* Màu chữ */
+  padding: 10px 20px; /* Khoảng cách bên trong */
+  border: none; /* Loại bỏ viền */
+  border-radius: 5px; /* Bo góc */
+  cursor: pointer; /* Thay đổi con trỏ */
+  font-size: 16px; /* Kích thước chữ */
+  transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color: #45a049;
+}
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1.8rem;
+  appearance: none; /* Xóa giao diện mặc định của select */
+  background-color: #fff;
+  max-width: 50rem;
+  height: 4rem;
+}
+select {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23999' d='M2 0L0 2h4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 10px;
+  padding-right: 30px; /* Chừa khoảng trống cho mũi tên */
+}
+select:focus {
+  border-color: #000;
+  outline: none;
+  box-shadow: 0 0 5px rgba(225, 225, 255, 0.1);
 }
 /*footer*/
 footer {
@@ -382,4 +489,7 @@ footer .footer_main .tag .search_bar button {
   border-radius: 25px;
   color: white;
   cursor: pointer;
+}
+label{
+  font-size: 30px;
 }

@@ -8,11 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CartItemRepository extends JpaRepository<CartItem, Long> {
-    // Tìm các CartItem trong giỏ hàng theo cartId
-    List<CartItem> findByCartId(Long cartId);
-
-    // Tìm CartItem theo cartId và productId
-    CartItem findByCartIdAndProductId(Long cartId, Long productId);
-
     List<CartItem> findByUserId(Long userId);
 }

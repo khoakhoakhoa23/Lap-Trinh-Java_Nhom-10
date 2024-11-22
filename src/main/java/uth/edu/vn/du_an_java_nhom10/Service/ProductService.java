@@ -35,6 +35,7 @@ public class ProductService {
             prodToUpdate.setPrice(product.getPrice());
             prodToUpdate.setImageUrl(product.getImageUrl());
             prodToUpdate.setRating(product.getRating());
+            prodToUpdate.setOrigin(product.getOrigin());
             productRepository.save(prodToUpdate);
             return true;
         } else {

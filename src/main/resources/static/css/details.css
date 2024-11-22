@@ -83,7 +83,7 @@ section nav ul li a.active {
 }
 
 section nav .icons {
-  max-width: 0 4px;
+  max-width: 4px;
   cursor: pointer;
   font-size: 18px;
   transition: 0.3ms;
@@ -177,6 +177,8 @@ section .main .button:hover i {
 .prodetails {
   display: flex;
   margin-top: 20px;
+  justify-content: center;
+
 }
 
 .prodetails .s-p-image {
@@ -194,18 +196,64 @@ section .main .button:hover i {
 .prodetails .single-pro-details {
   width: 50%;
   padding-top: 30px;
+
+}
+.prodetails .single-pro-details h6{
+  font-size: 20px;
 }
 .prodetails .single-pro-details h4 {
   padding: 10px 0 10px 0;
+  font-size: 26px;
+  color: #b23d1c;
 }
 #prodetails .single-pro-details h2 {
-  font-size: 26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  margin-top: 15px;
 }
 .prodetails .single-pro-details select {
   display: block;
   padding: 5px 10px;
   margin-bottom: 10px;
 }
+.cart {
+  display: flex;
+  flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+  align-items: left;    /* Căn giữa theo chiều ngang */
+  gap: 10px;              /* Khoảng cách giữa input và nhóm button */
+}
+
+.cart input {
+  width: 80px;            /* Chiều rộng của input */
+  padding: 5px;           /* Khoảng trống bên trong input */
+  text-align: center;     /* Canh giữa giá trị trong input */
+}
+
+.buttons {
+  display: flex;          /* Đặt các button cạnh nhau */
+  gap: 10px;              /* Khoảng cách giữa các button */
+}
+
+.buttons button {
+  padding: 10px 20px;     /* Kích thước nút */
+  cursor: pointer;        /* Đổi con trỏ khi rê chuột */
+  border: none;           /* Xóa đường viền mặc định */
+  background-color: #007bff; /* Màu nền */
+  color: white;           /* Màu chữ */
+  border-radius: 5px;     /* Bo góc */
+  font-size: 14px;        /* Cỡ chữ */
+}
+.buttons button a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.buttons button:hover {
+  background-color: #0056b3; /* Màu nền khi hover */
+}
+
 .prodetails .single-pro-details input {
   width: 50px;
   height: 47px;
@@ -217,6 +265,7 @@ section .main .button:hover i {
   background-color: #088178;
   color: #fff;
   cursor: pointer;
+
 }
 .prodetails .single-pro-details input:focus {
   outline: none;
@@ -224,6 +273,17 @@ section .main .button:hover i {
 .prodetails .single-pro-details span {
   line-height: 25px;
 }
+#btn-cart{
+  background-color: #dfb767; /* Màu nền */
+  color: white; /* Màu chữ */
+  padding: 10px 20px; /* Khoảng cách bên trong */
+  border: none; /* Loại bỏ viền */
+  border-radius: 5px; /* Bo góc */
+  cursor: pointer; /* Thay đổi con trỏ */
+  font-size: 16px; /* Kích thước chữ */
+  transition: background-color 0.3s ease;
+}
+
 
 /*footer*/
 footer {

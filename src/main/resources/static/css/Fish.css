@@ -213,13 +213,14 @@ section .main .button:hover i {
 }
 .product .box .card {
   width: 290px;
-  height: 550px;
+  height: auto; /* Chiều cao tự động */
   box-shadow: 0 0 8px #604141;
   border-radius: 5px;
   text-align: center;
-  padding: 10px 20px;
+  padding: 20px 20px;
   background: #f6f6f6;
 }
+
 .product .box .card .small-cart {
   display: flex;
   flex-flow: column;

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import uth.edu.vn.du_an_java_nhom10.Model.CartItem;
 import uth.edu.vn.du_an_java_nhom10.Model.Product;
 import uth.edu.vn.du_an_java_nhom10.Repository.ProductRepository;
 import uth.edu.vn.du_an_java_nhom10.Service.ProductService;
@@ -26,7 +27,7 @@ public class ProductAPIController {
         return productRepository.findAll();
     }
     // POST /products: Thêm sản phẩm mới
-    @PostMapping("/products")
+    @PostMapping("/products/add")
     public ResponseEntity<Product> addProduct(@RequestBody Product newProduct) {
         try {
             Product savedProduct = productRepository.save(newProduct);
@@ -35,7 +36,12 @@ public class ProductAPIController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);  // Lỗi server
         }
     }
-
+    @PostMapping("/products/remove")
+    public ResponseEntity<String> removeProduct(@RequestBody Product product) {
+        Long productId = product.getId();
+        productService.deleteProduct(productId);
+        return ResponseEntity.ok("Removed successfully");
+    }
     @PostMapping("/products/delete/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Long id) {
         boolean isDeleted = productService.deleteProduct(id);
